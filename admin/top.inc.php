@@ -49,7 +49,7 @@ else
                      <a href="#" > User Master</a>
                   </li>
                   <li class="menu-item-has-children dropdown">
-                     <a href="#" > Contact Us</a>
+                     <a href="contact_us.php" > Contact Us</a>
                   </li>
                </ul>
             </div>
