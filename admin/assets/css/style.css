@@ -614,6 +614,14 @@ canvas {
     background: #fb9678
 }
 
+.order-table .badge-delete {
+    background: #FF0000
+}
+
+.order-table .badge-edit {
+    background: #33A2FF
+}
+
 .messenger-box {
     padding-top: 15px
 }
@@ -3332,4 +3340,7 @@ footer.site-footer .footer-inner a {
 .field_error{
     color: red !important;
     margin-top: 15px;
+}
+.badge a{
+    color: #fff;
 }
