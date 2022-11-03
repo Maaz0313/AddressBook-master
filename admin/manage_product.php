@@ -13,7 +13,9 @@ $meta_desc='';
 $meta_keyword='';
 
 $msg='';
+$image_required='required';
 if (isset($_GET['id']) && $_GET['id']!='') {
+    $image_required='';
     $id = get_safe_value($conn,$_GET['id']);
     $res = mysqli_query($conn,"SELECT * FROM product where id='$id'");
     $check=mysqli_num_rows($res);
@@ -50,6 +52,8 @@ if (isset($_POST['submit'])) {
     $meta_desc = get_safe_value($conn,$_POST['meta_desc']);
     $meta_keyword = get_safe_value($conn,$_POST['meta_keyword']);
 
+    
+
 
     $res = mysqli_query($conn,"SELECT * FROM product where name='$name'");
     $check=mysqli_num_rows($res);
@@ -74,20 +78,25 @@ if (isset($_POST['submit'])) {
 
 
 
-    if($msg='')
-    {
-        if (isset($_GET['id']) && $_GET['id']!='') {
-            mysqli_query($conn,"UPDATE product SET categories_id='$categories_id',name='$name',mrp='$mrp',price='$price',qty='$qty',short_desc='$short_desc',description='$description',meta_title='$meta_title',meta_desc='$meta_desc',meta_keyword='$meta_keyword' WHERE id='$id'");
-        }
-        else
-        {
-            $image = rand(1111111,99999999).'_'.$_FILES['image']['name'];
-            move_uploaded_file($_FILES['image']['tmp_name'],'../media/product/'.$image);
-            mysqli_query($conn,"INSERT INTO product(categories_id,name,mrp,price,qty,short_desc,description,meta_title,meta_desc,meta_keyword,status,image) VALUES('$categories_id','$name','$mrp','$price','$qty','$short_desc','$description','$meta_title','$meta_desc','$meta_keyword',1,'$image')");
-        }
-        header('location:product.php');
-        die();
-    }
+    if($msg==''){
+		if(isset($_GET['id']) && $_GET['id']!=''){
+			if($_FILES['image']['name']!=''){
+				$image=rand(111111111,999999999).'_'.$_FILES['image']['name'];
+				move_uploaded_file($_FILES['image']['tmp_name'],PRODUCT_IMAGE_SERVER_PATH.$image);
+				$update_sql="update product set categories_id='$categories_id',name='$name',mrp='$mrp',price='$price',qty='$qty',short_desc='$short_desc',description='$description',meta_title='$meta_title',meta_desc='$meta_desc',meta_keyword='$meta_keyword',image='$image' where id='$id'";
+			}else{
+				$update_sql="update product set categories_id='$categories_id',name='$name',mrp='$mrp',price='$price',qty='$qty',short_desc='$short_desc',description='$description',meta_title='$meta_title',meta_desc='$meta_desc',meta_keyword='$meta_keyword' where id='$id'";
+			}
+			mysqli_query($conn,$update_sql);
+		}else{
+			$image=rand(111111111,999999999).'_'.$_FILES['image']['name'];
+			move_uploaded_file($_FILES['image']['tmp_name'],PRODUCT_IMAGE_SERVER_PATH.$image);
+            mysqli_query($conn,"INSERT into product(categories_id,name,mrp,price,qty,image,short_desc,description,meta_title,meta_desc,meta_keyword,status) values('$categories_id','$name','$mrp','$price','$qty','$image','$short_desc','$description','$meta_title','$meta_desc','$meta_keyword',1)");
+            // echo $categories_id, $name, $mrp,$price,$qty,$image,$short_desc,$description,$meta_title,$meta_desc,$meta_keyword;
+		}
+		header('location:product.php');
+		die();
+	}
 }
 
 ?>
@@ -129,7 +138,7 @@ if (isset($_POST['submit'])) {
                         </div>
                         <div class="form-group">
                             <label for="price" class="form-control-label">Price</label>
-                            <input type="text" name="name" placeholder="Enter product price" class="form-control" required value="<?php echo $price ?>">
+                            <input type="text" name="price" placeholder="Enter product price" class="form-control" required value="<?php echo $price ?>">
                         </div>
                         <div class="form-group">
                             <label for="qty" class="form-control-label">Qty </label>
@@ -137,7 +146,7 @@ if (isset($_POST['submit'])) {
                         </div>
                         <div class="form-group">
                             <label for="image" class="form-control-label">Image </label>
-                            <input type="file" name="name" class="form-control" required>
+                            <input type="file" name="image" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="short_desc" class="form-control-label">Short Description </label>
