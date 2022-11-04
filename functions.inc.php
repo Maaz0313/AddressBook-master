@@ -11,10 +11,18 @@ function prx($arr)
     die();
 }
 
-function get_product()
+function get_product($conn,$type='',$limit='')
 {
-    $conn = mysqli_connect("localhost","root","","addressbook");
-    $sql="select * from product";
+    
+    $sql="select * from product where status=1";
+    if($type=='latest')
+    {
+        $sql.=" order by id desc";
+    }
+    if($limit!='')
+    {
+        $sql.=" limit $limit";
+    }
     $res=mysqli_query($conn,$sql);
     $data=array();
     while($row=mysqli_fetch_assoc($res))
