@@ -1,6 +1,7 @@
 <?php
-require('top.php')
+require('top.php');
 $cat_id = mysqli_real_escape_string($conn,$_GET['id']);
+$get_product=get_product($conn,'',$cat_id);
 ?>
 <div class="body__overlay"></div>
         <!-- Start Bradcaump area -->
@@ -26,6 +27,8 @@ $cat_id = mysqli_real_escape_string($conn,$_GET['id']);
         <section class="htc__product__grid bg__white ptb--100">
             <div class="container">
                 <div class="row">
+                    <?php if(count($get_product)>0){
+                    ?>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="htc__product__rightidebar">
                             <div class="htc__grid__top">
@@ -43,9 +46,9 @@ $cat_id = mysqli_real_escape_string($conn,$_GET['id']);
                                 <div class="shop__grid__view__wrap">
                                     <div role="tabpanel" id="grid-view" class="single-grid-view tab-pane fade in active clearfix">
                                     <?php
-                            $get_product=get_product($conn,'latest',4,$cat_id);
-                            foreach($get_product as $list){
-                            ?>
+
+                                    foreach($get_product as $list){
+                                    ?>
                             <!-- Start Single Category -->
                             <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
                                 <div class="category">
@@ -73,7 +76,9 @@ $cat_id = mysqli_real_escape_string($conn,$_GET['id']);
                         </div>
                         
                     </div>
-                    
+                    <?php } else {
+                        echo "Data not found";
+                    } ?>
                 </div>
             </div>
         </section>

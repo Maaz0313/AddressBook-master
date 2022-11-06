@@ -11,14 +11,14 @@ function prx($arr)
     die();
 }
 
-function get_product($conn,$type='',$limit='')
+function get_product($conn,$type='',$limit='',$cat_id='')
 {
     
     $sql="select * from product where status=1";
-    if($type=='latest')
-    {
-        $sql.=" order by id desc";
+    if ($cat_id!='') {
+        $sql.=" and categories_id=$cat_id";
     }
+    $sql.=" order by id desc";
     if($limit!='')
     {
         $sql.=" limit $limit";
