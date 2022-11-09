@@ -48,28 +48,28 @@ $get_product=get_product($conn,'',$cat_id);
                                 <div class="shop__grid__view__wrap">
                                     <div role="tabpanel" id="grid-view" class="single-grid-view tab-pane fade in active clearfix">
                                         <!-- Start Single Product -->
-                                     <?php
-                                        foreach($get_product as $list){
-                                    ?>
-                                    <!-- Start Single Category -->
-                                    <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
-                                    <div class="category">
-                                    <div class="ht__cat__thumb">
-                                        <a href="product.php?id=<?php echo $list['id']?>">
-                                            <img src="<?php echo PRODUCT_IMAGE_SITE_PATH.$list['image']?>" alt="product images">
-                                        </a>
-                                    </div>
-                                   
-                                    <div class="fr__product__inner">
-                                        <h4><a href="product-details.html"><?php echo $list['name']?></a></h4>
-                                        <ul class="fr__pro__prize">
-                                            <li class="old__prize"><?php echo $list['mrp']?></li>
-                                            <li><?php echo $list['price']?></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php } ?>
+                                        <?php
+                                            foreach($get_product as $list){
+                                        ?>
+                                        <!-- Start Single Category -->
+                                        <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
+                                            <div class="category">
+                                                <div class="ht__cat__thumb">
+                                                    <a href="product.php?id=<?php echo $list['id']?>">
+                                                        <img src="<?php echo PRODUCT_IMAGE_SITE_PATH.$list['image']?>" alt="product images">
+                                                    </a>
+                                                </div>
+                                            
+                                                <div class="fr__product__inner">
+                                                    <h4><a href="product-details.html"><?php echo $list['name']?></a></h4>
+                                                    <ul class="fr__pro__prize">
+                                                        <li class="old__prize"><?php echo $list['mrp']?></li>
+                                                        <li><?php echo $list['price']?></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php } ?>
                                         <!-- End Single Product -->
                             
                                     </div>
@@ -79,7 +79,7 @@ $get_product=get_product($conn,'',$cat_id);
                         </div>
                     </div>
                     <?php } else{
-                        echo "data not found";
+                        echo "Data not found";
                     } ?>
                 </div>
             </div>
