@@ -72,9 +72,9 @@ require('top.php');
                             <form id="contact-form" action="mail.php" method="post">
                                 <div class="single-contact-form">
                                     <div class="contact-box name">
-                                        <input type="text" id=name name="name" placeholder="Your Name*">
-                                        <input type="email" id=email name="email" placeholder="Email*">
-                                        <input type="emai" id=mobile name="mobile" placeholder="Mobile*">
+                                        <input type="text" id="name" name="name" placeholder="Your Name*">
+                                        <input type="email" id="email" name="email" placeholder="Email*">
+                                        <input type="emai" id="mobile" name="mobile" placeholder="Mobile*">
                                     </div>
                                 </div>
                             

@@ -1,5 +1,5 @@
 <?php
-require('connection.inc.php');
+require('conn.inc.php');
 require('functions.inc.php');
 
 $name=get_safe_value($conn,$POST['name']);

@@ -1,23 +1,7 @@
 <?php 
-require('top.php'); 
-if(isset($_GET['id'])){
-	$product_id=mysqli_real_escape_string($conn,$_GET['id']);
-	if($product_id>0){
-		$get_product=get_product($conn,'','',$product_id);
-	}else{
-		?>
-		<script>
-		window.location.href='index.php';
-		</script>
-		<?php
-	}
-}else{
-	?>
-	<script>
-	window.location.href='index.php';
-	</script>
-	<?php
-}
+require('top.php');
+$product_id=mysqli_real_escape_string($conn,$_GET['id']);
+$get_product=get_product($conn,'','',$product_id);
 ?>
 
 <!-- Start Bradcaump area -->
@@ -62,12 +46,12 @@ if(isset($_GET['id'])){
                         </div>
                         <div class="col-md-7 col-lg-7 col-sm-12 col-xs-12 smt-40 xmt-40">
                             <div class="ht__product__dtl">
-                                <h2><?php $get_product['0']['name']?></h2>  
+                                <h2><?php echo $get_product['0']['name']?></h2>  
                                 <ul  class="pro__prize">
                                     <li class="old__prize"><?php echo $get_product['0']['mrp']?></li>
                                     <li><?php echo $get_product['0']['price']?></li>
                                 </ul>
-                                <p class="pro__info"><?php echo $get_product['0']['short_decs']?></p>
+                                <p class="pro__info"><?php echo $get_product['0']['short_desc']?></p>
                                 <div class="ht__pro__desc">
                                     <div class="sin__desc">
                                         <p><span>Availability:</span> In Stock</p>
