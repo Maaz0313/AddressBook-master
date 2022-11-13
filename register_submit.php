@@ -1,5 +1,5 @@
 <?php
-require('connection.inc.php');
+require('conn.inc.php');
 require('functions.inc.php');
 
 $name=get_safe_value($conn,$_POST['name']);
@@ -13,6 +13,6 @@ if($check_user>0){
 }else{
     $added_on=date('y-m-d h:i:s');
     mysqli_query($conn,"insert into users(name,email,mobile,password,added_on) values('$name','$email','$mobile','$password','$added_on')");
-    echo "inert";
+    echo "insert";
 }
 ?>

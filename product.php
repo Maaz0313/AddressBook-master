@@ -1,7 +1,17 @@
 <?php 
 require('top.php');
 $product_id=mysqli_real_escape_string($conn,$_GET['id']);
+if($product_id>0)
+{
 $get_product=get_product($conn,'','',$product_id);
+}
+else{
+    ?>
+    <script>
+        window.location.href='index.php';
+    </script>
+    <?php
+}
 ?>
 
 <!-- Start Bradcaump area -->

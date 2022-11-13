@@ -455,12 +455,12 @@ function send_message(){
 }
 
 function user_register(){
-    jQueryO('.field_error').html('');
+    jQuery('.field_error').html('');
     var name=jQuery("#name").val();
     var email=jQuery("#email").val();
     var mobile=jQuery("#mobile").val();
     var password=jQuery("#password").val();
-
+    var is_error='';
     if(name==""){
         jQuery('#name_error').html('please enter name');
         is_error='yes';
@@ -483,7 +483,7 @@ function user_register(){
                 if(result=='email_present'){
                     jQuery('#email_error').html('Email id already present');
                 }if(result=='insert'){
-                    jQuery('#register_msg p').html('successfully');
+                    jQuery('#register_msg p').html('Thank you for registration');
                 }
             }
         });
@@ -491,11 +491,11 @@ function user_register(){
 }
 
 function user_login(){
-    jQueryO('.field_error').html('');
+    jQuery('.field_error').html('');
     var email=jQuery("#login_email").val();
     var password=jQuery("#login_password").val();
     var is_error='';
-    }if(email==""){
+    if(email==""){
         jQuery('#login_email_error').html('please enter email');
         is_error='yes';
     }if(password==""){
@@ -516,6 +516,7 @@ function user_login(){
             }
         });
     }
+}
 function manage_cart(pid,type){
     var email=jQuery("#qty").val();
     jQuery.ajax({

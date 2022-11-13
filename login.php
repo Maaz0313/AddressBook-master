@@ -77,7 +77,7 @@ require('top.php');
 									</div>
 									<div class="single-contact-form">
 										<div class="contact-box name">
-											<input type="text" name="email" id="email" placeholder="Your Email*" style="width:100%">
+											<input type="email" name="email" id="email" placeholder="Your Email*" style="width:100%">
 										</div>
                                         <span class="field_error" id="email_error"></span>
 									</div>

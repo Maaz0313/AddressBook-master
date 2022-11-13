@@ -28,7 +28,7 @@ function get_product($conn,$limit='',$cat_id='',$product_id='') {
         $sql.=" and product.categories_id=categories.id ";
         $sql.=" order by product.id desc";
     if($limit!=''){
-        $sql.=" product.limit $limit";
+        $sql.=" limit $limit";
     }
     $res=mysqli_query($conn,$sql,);
     $data=array();
