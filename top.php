@@ -78,12 +78,18 @@ while($row=mysqli_fetch_assoc($cat_res)){
                             </div>
                             <div class="col-md-3 col-lg-2 col-sm-4 col-xs-4">
                                 <div class="header__right">
-                                    <div class="header__search search search__open">
-                                        <a href="#"><i class="icon-magnifier icons"></i></a>
-                                    </div>
-                                    <div class="header__account">
-                                        <a href="login.php">Login/Register</a>
-                                    </div>
+                                    
+                                        <?php if(isset($_SESSION['UserID']))
+                                        {
+                                            echo '<div class="header__account"><a href="logout.php">Logout</a></div>';
+                                        }
+                                        else
+                                        {
+                                            echo '<div class="header__account"><a href="login.php">Login</a></div>';
+                                            echo '<div class="header__account"><a href="register.php">Register</a></div>';
+                                        }
+                                        ?>
+                                    
                                     <div class="htc__shopping__cart">
                                         <a class="cart__menu" href="#"><i class="icon-handbag icons"></i></a>
                                         <a href="#"><span class="htc__qua">0</span></a>
