@@ -82,6 +82,7 @@ while($row=mysqli_fetch_assoc($cat_res)){
                                         <?php if(isset($_SESSION['UserID']))
                                         {
                                             echo '<div class="header__account"><a href="logout.php">Logout</a></div>';
+                                            
                                         }
                                         else
                                         {
@@ -89,7 +90,6 @@ while($row=mysqli_fetch_assoc($cat_res)){
                                             echo '<div class="header__account"><a href="register.php">Register</a></div>';
                                         }
                                         ?>
-                                    
                                     <div class="htc__shopping__cart">
                                         <a class="cart__menu" href="#"><i class="icon-handbag icons"></i></a>
                                         <a href="#"><span class="htc__qua">0</span></a>
