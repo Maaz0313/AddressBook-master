@@ -1,6 +1,5 @@
 <?php 
 require('top.php'); 
-
 ?>
 
 <!-- Start Bradcaump area -->
@@ -42,28 +41,28 @@ require('top.php');
                                     </thead>
                                     <tbody>
                                         <?php
-                                        foreach($_SESSION['cart'] as $key->$val){
-                                            $producArr=get_product($conn,'',$key);
-                                            $pname=$producArr[0]['name'];
-                                            $pname=$producArr[0]['mrp'];
-                                            $pname=$producArr[0]['price'];
-                                            $pname=$producArr[0]['image'];
+                                        foreach($_SESSION['cart'] as $key=>$val){
+                                            $productArr=get_product($conn,'','',$key);
+                                            $pname=$productArr[0]['name'];
+                                            $mrp=$productArr[0]['mrp'];
+                                            $price=$productArr[0]['price'];
+                                            $image=$productArr[0]['image'];
                                             $qty=$val['qty'];
-                                            ?>
+                                        ?>
                                         <tr>
-                                            <td class="product-thumbnail"><a href="#"><img src="<?php echo PRODUCT_IMAGE_SITE_PATH.$image?>"/></a></td>
-                                            <td class="product-name"><a href="#"><?php echo $pname ?></a>
+                                            <td class="product-thumbnail"><a href="#"><img src="<?php echo PRODUCT_IMAGE_SITE_PATH.$image?>" alt="product img" /></a></td>
+                                            <td class="product-name"><a href="#"><?php echo $pname?></a>
                                                 <ul  class="pro__prize">
-                                                    <li class="old__prize"><?php echo $mrp ?></li>
-                                                    <li><?php echo $price ?></li>
+                                                    <li class="old__prize">Rs. <?php echo $mrp?></li>
+                                                    <li><?php echo $price?></li>
                                                 </ul>
                                             </td>
-                                            <td class="product-price"><span class="amount"><?php echo $price ?></span></td>
-                                            <td class="product-quantity"><input type="number" value="<?php echo $qty ?>" /></td>
-                                            <td class="product-subtotal"><?php echo $qty*$price ?></td>
+                                            <td class="product-price"><span class="amount"><?php echo $price?></span></td>
+                                            <td class="product-quantity"><input type="number" value="<?php echo $qty?>" /><br><a href="#">update</a></td>
+                                            <td class="product-subtotal"><?php echo (int)$price * (int)$qty;?></td>
                                             <td class="product-remove"><a href="#"><i class="icon-trash icons"></i></a></td>
                                         </tr>
-                                        <?php } ?>
+                                        <?php }?>
                                     </tbody>
                                 </table>
                             </div>
@@ -74,7 +73,6 @@ require('top.php');
                                             <a href="#">Continue Shopping</a>
                                         </div>
                                         <div class="buttons-cart checkout--btn">
-                                            <a href="#">update</a>
                                             <a href="#">checkout</a>
                                         </div>
                                     </div>
@@ -86,5 +84,4 @@ require('top.php');
             </div>
         </div>
         <!-- cart-main-area end -->
-
 <?php require('footer.php') ?>
