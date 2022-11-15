@@ -18,10 +18,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 			if ($RecordCount > 0) {
 				$_SESSION['USER_LOGIN']='YES';
-				$_SESSION["UserID"] = $UserRecords["id"];
-				$_SESSION["UserFullName"] = $UserRecords["name"];
-				$_SESSION["UserEmail"] = $UserRecords["email"];
-				header('Location: index.php');
+				$_SESSION['UserID'] = $UserRecords["id"];
+				$_SESSION['UserFullName'] = $UserRecords["name"];
+				$_SESSION['UserEmail'] = $UserRecords["email"];
+				header('location:index.php');
 			} else {
 				$_ErrorMessage = "<div class='alert alert-danger'>Invalid Email/ Password!</div>";
 			}
