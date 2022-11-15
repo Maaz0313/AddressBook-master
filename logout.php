@@ -3,6 +3,7 @@ require('conn.inc.php');
 require('functions.inc.php');
 unset($_SESSION['UserID']);
 unset($_SESSION['UserFullName']);
+unset($_SESSION['UserEmail']);
 header('location:index.php');
 die;
 ?>
