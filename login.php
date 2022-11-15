@@ -6,11 +6,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$password = $_POST['login_password'];
 
 		$_ErrorMessage  = "";
-		if ($email == "") {
-			$_ErrorMessage = "<div class='alert alert-danger'>Error: Please Enter Email</div>";
-		} elseif ($password == "") {
-			$_ErrorMessage = "<div class='alert alert-danger'>Error: Please Enter Password</div>";
-		}
 
 		//Now checking for Login Details username and password in Database
 		if ($_ErrorMessage == "") {

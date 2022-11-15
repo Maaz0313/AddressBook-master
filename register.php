@@ -35,7 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$queryResult = mysqli_query($conn, $query);
 
 				if ($queryResult) {
-					$_ErrorMessage = "<div class='mt-4 alert alert-success'>Account Created</div>";
+					$_ErrorMessage = "<div class='mt-4 alert alert-success alert-dismissible' role='alert'>
+                    <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>Account Created</div>";
 				} else {
 					$_ErrorMessage = "<div class='mt-4 alert alert-danger'>Please try again !</div>";
 				}
