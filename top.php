@@ -1,11 +1,14 @@
 <?php
 require('conn.inc.php');
 require('functions.inc.php');
+require('add_to_cart.inc.php');
 $cat_res=mysqli_query($conn,"select * from categories where status=1 order by categories asc");
 $cat_arr=array();
 while($row=mysqli_fetch_assoc($cat_res)){
 	$cat_arr[]=$row;	
 }
+$obj=new add_to_cart();
+$totalProduct=$obj->totalProduct();
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -55,7 +58,7 @@ while($row=mysqli_fetch_assoc($cat_res)){
                                                 <?php
                                             }
                                         ?>
-                                        <li><a href="contact.php">contact</a></li>
+                                        <li><a href="contact.php">Contact</a></li>
                                     </ul>
                                 </nav>
 
@@ -71,7 +74,7 @@ while($row=mysqli_fetch_assoc($cat_res)){
                                                 <?php
                                             }
                                             ?>
-                                            <li><a href="contact.php">contact</a></li>
+                                            <li><a href="contact.php">Contact</a></li>
                                         </ul>
                                     </nav>
                                 </div>  
@@ -92,7 +95,7 @@ while($row=mysqli_fetch_assoc($cat_res)){
                                         ?>
                                     <div class="htc__shopping__cart">
                                         <a class="cart__menu" href="#"><i class="icon-handbag icons"></i></a>
-                                        <a href="#"><span class="htc__qua">0</span></a>
+                                        <a href="#"><span class="htc__qua"><?php echo $totalProduct?></span></a>
                                     </div>
                                 </div>
                             </div>

@@ -24,9 +24,9 @@ else{
                                 <nav class="bradcaump-inner">
                                   <a class="breadcrumb-item" href="index.php">Home</a>
                                   <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
-                                  <a class="breadcrumb-item" href="categories.php?id=<?php $get_product['0']['categories_id']?>"><?php $get_product['0']['categories']?></a>
+                                  <a class="breadcrumb-item" href="categories.php?id=<?php $get_product['0']['categories_id']?>"><?php echo $get_product['0']['categories']?></a>
                                   <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
-                                  <span class="breadcrumb-item active"><?php $get_product['0']['name']?></span>
+                                  <span class="breadcrumb-item active"><?php echo $get_product['0']['name']?></span>
                                 </nav>
                             </div>
                         </div>
@@ -89,7 +89,7 @@ else{
                                         </ul>
                                     </div>
                                 </div>
-                                <a class="fr__btn" href="javascript:void(0)" onclick="manage_cart('<?php echo $get_product['0']['id'] ?>')">Add to cart</a>
+                                <a class="fr__btn" href="javascript:void(0)" onclick="manage_cart('<?php echo $get_product['0']['id'] ?>','add')">Add to cart</a>
                             </div>
                         </div>
                     </div>
