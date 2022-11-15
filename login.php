@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$_SESSION['UserID'] = $UserRecords["id"];
 				$_SESSION['UserFullName'] = $UserRecords["name"];
 				$_SESSION['UserEmail'] = $UserRecords["email"];
-				header('location:index.php');
+				header('Location: index.php');
 			} else {
 				$_ErrorMessage = "<div class='alert alert-danger'>Invalid Email/ Password!</div>";
 			}
