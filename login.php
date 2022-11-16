@@ -1,27 +1,6 @@
 <?php 
 require('top.php');
 
-		$_ErrorMessage  = "";
-
-		//Now checking for Login Details username and password in Database
-		if ($_ErrorMessage == "") {
-
-			$passwordEncrypt = md5($password);
-			$querySearch = "select * from users where email = '" . $email . "' AND password = '" . $passwordEncrypt . "'";
-			$queryResult = mysqli_query($conn, $querySearch);
-			$RecordCount = mysqli_num_rows($queryResult); // 	
-			$UserRecords = mysqli_fetch_assoc($queryResult);
-
-			if ($RecordCount > 0) {
-				$_SESSION['USER_LOGIN']='YES';
-				$_SESSION['UserID'] = $UserRecords["id"];
-				$_SESSION['UserFullName'] = $UserRecords["name"];
-				$_SESSION['UserEmail'] = $UserRecords["email"];
-				header('Location: index.php');
-			} else {
-				$_ErrorMessage = "<div class='alert alert-danger'>Invalid Email/ Password!</div>";
-			}
-		}
 ?>
         <!-- Start Bradcaump area -->
         <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/4.jpg) no-repeat scroll center center / cover ;">
