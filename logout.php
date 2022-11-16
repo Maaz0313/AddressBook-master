@@ -1,5 +1,5 @@
 <?php
-require('conn.inc.php');
+require('connection.inc.php');
 require('functions.inc.php');
 unset($_SESSION['UserID']);
 unset($_SESSION['UserFullName']);

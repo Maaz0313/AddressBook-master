@@ -81,6 +81,7 @@ $totalProduct=$obj->totalProduct();
                             </div>
                             <div class="col-md-3 col-lg-2 col-sm-4 col-xs-4">
                                 <div class="header__right">
+<<<<<<< HEAD
                                     
                                         <?php if(isset($_SESSION['UserID']))
                                         {
@@ -93,6 +94,14 @@ $totalProduct=$obj->totalProduct();
                                             echo '<div class="header__account"><a href="register.php">Register</a></div>';
                                         }
                                         ?>
+=======
+                                    <div class="header__search search search__open">
+                                        <a href="#"><i class="icon-magnifier icons"></i></a>
+                                    </div>
+                                    <div class="header__account">
+                                        <a href="login.php">Login/Register</a>
+                                    </div>
+>>>>>>> parent of 950f469 (Created register.php)
                                     <div class="htc__shopping__cart">
                                         <a class="cart__menu" href="cart.php"><i class="icon-handbag icons"></i></a>
                                         <a href="cart.php"><span class="htc__qua"><?php echo $totalProduct?></span></a>
