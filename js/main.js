@@ -512,7 +512,7 @@ function user_login(){
                 if(result=='wrong'){
                     jQuery('.login_msg p').html('Please enter valid login details');
                 }if(result=='valid'){
-                    window.location.href='index.php';
+                    window.location.href=window.location.href;
                 }
             }
         });
