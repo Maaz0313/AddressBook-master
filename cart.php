@@ -58,7 +58,8 @@ require('top.php');
                                                 </ul>
                                             </td>
                                             <td class="product-price"><span class="amount">Rs. <?php echo $price?></span></td>
-                                            <td class="product-quantity"><input type="number" id="<?php echo $key?>qty" value="<?php echo $qty?>" /><br><a href="javascript:void(0)" onclick="manage_cart('<?php $key?>','update')">update</a></td>
+                                            <td class="product-quantity"><input type="number" id="<?php echo $key?>qty" value="<?php echo $qty?>" />
+                                            <br><a href="javascript:void(0)" onclick="manage_cart('<?php $key?>','update')">update</a></td>
                                             <td class="product-subtotal"><?php echo $qty*$price?></td>
                                             <td class="product-remove"><a href="javascript:void(0)" onclick="manage_cart('<?php $key?>','remove')"><i class="icon-trash icons"></i></a></td>
                                         </tr>
