@@ -76,9 +76,13 @@ if (isset($_POST['submit'])) {
         }
     }
 
-    if($_FILES['image']['type']!='' && ($_FILES['image']['type']!='image/png' || $_FILES['image']['type']!='image/jpg' || $_FILES['image']['type']!='image/jpeg'))
-    {
-        $msg="Please select only png, jpg and jpeg image formats";
+    // if($_FILES['image']['type']!='' && ($_FILES['image']['type']!='image/png' || $_FILES['image']['type']!='image/jpg' || $_FILES['image']['type']!='image/jpeg'))
+    // {
+    //     $msg="Please select only png, jpg and jpeg image formats";
+
+    // }
+    if($_FILES['image']['type']!='image/png' && $_FILES['image']['type']!='image/jpg' && $_FILES['image']['type']!='image/jpeg'){
+        $msg="Please select only png,jpg and jpeg image formate";
     }
 
     if($msg==''){
