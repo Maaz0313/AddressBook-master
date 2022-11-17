@@ -56,10 +56,7 @@ require('top.php');
 								</div>
 							</div>
 						</div> 
-                
-				</div>
-				
-
+					</div>
 					<div class="col-md-6">
 						<div class="contact-form-wrap mt--60">
 							<div class="col-xs-12">
@@ -98,15 +95,15 @@ require('top.php');
 										<button type="button" class="fv-btn" onclick="user_register()">Register</button>
 									</div>
 								</form>
-								<div class="form-output register_msg ">
+								<div class="form-output register_msg">
 									<p class="form-messege field_error"></p>
 								</div>
 							</div>
 						</div> 
                 
-				</div>
-					
-            </div>
+					</div>
+            	</div>
+			</div>
         </section>
         <!-- End Contact Area -->
 <?php require('footer.php') ?>

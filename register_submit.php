@@ -11,6 +11,7 @@ $check_user=mysqli_num_rows(mysqli_query($conn,"select * from users where email=
 if($check_user>0){
     echo "email_present";
 }else{
+    date_default_timezone_set("Asia/Karachi");
     $added_on=date('y-m-d h:i:s');
     mysqli_query($conn,"insert into users(name,email,mobile,password,added_on) values('$name','$email','$mobile','$password','$added_on')");
     echo "insert";

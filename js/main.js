@@ -482,8 +482,9 @@ function user_register(){
             success:function(result){
                 if(result=='email_present'){
                     jQuery('#email_error').html('Email id already present');
-                }if(result=='insert'){
-                    jQuery('#register_msg p').html('Thank you for registration');
+                }
+                if(result=='insert'){
+                    jQuery('.register_msg p').html('Thank you for registration');
                 }
             }
         });

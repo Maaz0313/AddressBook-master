@@ -81,18 +81,18 @@ $totalProduct=$obj->totalProduct();
                             </div>
                             <div class="col-md-3 col-lg-2 col-sm-4 col-xs-4">
                                 <div class="header__right">
-                                    
-                                        <?php if(isset($_SESSION['UserID']))
+                                    <div class="header__account">
+                                        <?php if(isset($_SESSION['USER_LOGIN']))
                                         {
-                                            echo '<div class="header__account"><a href="logout.php">Logout</a></div>';
+                                            echo '<a href="logout.php">Logout</a>';
                                             
                                         }
                                         else
                                         {
-                                            echo '<div class="header__account"><a href="login.php">Login</a></div>';
-                                            echo '<div class="header__account"><a href="register.php">Register</a></div>';
+                                            echo '<a href="login.php">Login/Register</a>';
                                         }
                                         ?>
+                                    </div>
                                     <div class="htc__shopping__cart">
                                         <a class="cart__menu" href="cart.php"><i class="icon-handbag icons"></i></a>
                                         <a href="cart.php"><span class="htc__qua"><?php echo $totalProduct?></span></a>
