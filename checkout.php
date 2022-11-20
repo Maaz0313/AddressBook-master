@@ -50,17 +50,19 @@ if(isset($_POST['submit'])){
         $action = '';
         $posted = array();
         if(!empty($_POST)) {
-        foreach($_POST as $key => $value) {    
-            $posted[$key] = $value; 
+            foreach($_POST as $key => $value) {    
+                $posted[$key] = $value; 
+            }
         }
-        }
+        $userArr=mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM users WHERE id='$user_id'"));
+
         $formError = 0;
         $txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
         $posted['txnid']=$txnid;
-        $posted['amount']=100;
-        $posted['firstname']="Vishal Gupta";
-        $posted['email']="phpvishal@gmail.com";
-        $posted['phone']="9999999999";
+        $posted['amount']=$total_price;
+        $posted['firstname']=$userArr['name'];
+        $posted['email']=$userArr['email'];
+        $posted['phone']=$userArr['mobile'];
         $posted['productinfo']="productinfo";
         $posted['key']=$MERCHANT_KEY ;
         $hash = '';
@@ -93,16 +95,17 @@ if(isset($_POST['submit'])){
         }
 
 
-        $formHtml ='<form method="post" name="payuForm" id="payuForm" action="'.$action.'"><input type="hidden" name="key" value="'.$MERCHANT_KEY.'" /><input type="hidden" name="hash" value="'.$hash.'"/><input type="hidden" name="txnid" value="'.$posted['txnid'].'" /><input name="amount" type="hidden" value="'.$posted['amount'].'" /><input type="hidden" name="firstname" id="firstname" value="'.$posted['firstname'].'" /><input type="hidden" name="email" id="email" value="'.$posted['email'].'" /><input type="hidden" name="phone" value="'.$posted['phone'].'" /><textarea name="productinfo" style="display:none;">'.$posted['productinfo'].'</textarea><input type="hidden" name="surl" value="http://91weblessons.com/payu/payment_complete.php" /><input type="hidden" name="furl" value="http://91weblessons.com/payu/payment_fail.php"/><input type="submit" style="display:none;"/></form>';
+        $formHtml ='<form method="post" name="payuForm" id="payuForm" action="'.$action.'"><input type="hidden" name="key" value="'.$MERCHANT_KEY.'" /><input type="hidden" name="hash" value="'.$hash.'"/><input type="hidden" name="txnid" value="'.$posted['txnid'].'" /><input name="amount" type="hidden" value="'.$posted['amount'].'" /><input type="hidden" name="firstname" id="firstname" value="'.$posted['firstname'].'" /><input type="hidden" name="email" id="email" value="'.$posted['email'].'" /><input type="hidden" name="phone" value="'.$posted['phone'].'" /><textarea name="productinfo" style="display:none;">'.$posted['productinfo'].'</textarea><input type="hidden" name="surl" value="http://localhost/AddressBook-master/payment_complete.php" /><input type="hidden" name="furl" value="http://localhost/AddressBook-master/payment_fail.php"/><input type="submit" style="display:none;"/></form>';
         echo $formHtml;
         echo '<script>document.getElementById("payuForm").submit();</script>';
     }
     else{
-    ?>
-    <script>
-        window.location.href='thank_you.php';
-    </script>
-    <?php
+        ?>
+        <script>
+            window.location.href='thank_you.php';
+        </script>
+        <?php
+    }
 }
 ?>
         <!-- Start Bradcaump area -->
