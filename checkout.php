@@ -29,8 +29,11 @@ if(isset($_POST['submit'])){
     $order_status='1';
     date_default_timezone_set("Asia/Karachi");
     $added_on=date('y-m-d h:i:s');
+    $txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
 
-    mysqli_query($conn,"INSERT INTO `order`(`user_id`, `address`, `city`, `pincode`, `payment_type`, `total_price`, `payment_status`, `order_status`, `added_on`) VALUES('$user_id', '$address', '$city', '$pincode', '$payment_type', '$total_price', '$payment_status', '$order_status', '$added_on')");
+
+    mysqli_query($conn,"INSERT INTO `order`(`user_id`, `address`, `city`, `pincode`, `payment_type`, `total_price`, `payment_status`, `order_status`, `added_on`,`txnid`) VALUES('$user_id', '$address', '$city', '$pincode', '$payment_type', '$total_price', '$payment_status', '$order_status', '$added_on','$txnid')");
+
     $order_id=mysqli_insert_id($conn);
 
     foreach($_SESSION['cart'] as $key=>$val){
@@ -57,7 +60,6 @@ if(isset($_POST['submit'])){
         $userArr=mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM users WHERE id='$user_id'"));
 
         $formError = 0;
-        $txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
         $posted['txnid']=$txnid;
         $posted['amount']=$total_price;
         $posted['firstname']=$userArr['name'];
