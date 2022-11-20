@@ -26,9 +26,10 @@ if(isset($_POST['submit'])){
     if ($payment_type=='cod') {
         $payment_status='success';
     }
-    $order_status='pending';
+    $order_status='1';
     date_default_timezone_set("Asia/Karachi");
     $added_on=date('y-m-d h:i:s');
+
     mysqli_query($conn,"INSERT INTO `order`(`user_id`, `address`, `city`, `pincode`, `payment_type`, `total_price`, `payment_status`, `order_status`, `added_on`) VALUES('$user_id', '$address', '$city', '$pincode', '$payment_type', '$total_price', '$payment_status', '$order_status', '$added_on')");
     $order_id=mysqli_insert_id($conn);
 
