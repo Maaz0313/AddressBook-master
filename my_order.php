@@ -44,7 +44,7 @@
                                             while($row=mysqli_fetch_assoc($res)){
                                             ?>
                                             <tr>
-                                                <td class="product-add-to-cart"><a href="#"> <?php echo $row['id']?></a></td>
+                                                <td class="product-add-to-cart"><a href="my_order_details.php?id=<?php echo $row['id']?>"> <?php echo $row['id']?></a></td>
                                                 <td class="product-name"><?php echo $row['added_on']?></td>
                                                 <td class="product-name">
                                                     <?php echo $row['address']?><br>
@@ -53,7 +53,7 @@
                                                 </td>
                                                 <td class="product-name"><?php echo $row['payment_type']?></td>
                                                 <td class="product-name"><?php echo $row['payment_status']?></td>
-                                                <td class="product-name"><?php echo $row['order_statu']?></td>
+                                                <td class="product-name"><?php echo $row['order_status']?></td>
                                             </tr>
                                             <?php }?>
                                         </tbody>

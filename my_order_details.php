@@ -1,4 +1,7 @@
-<?php require('top.php');?>
+<?php
+require('top.php');
+$order_id=get_safe_value($conn,$_GET['id'])
+?>
 <!-- Start Bradcaump area -->
 <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/4.jpg) no-repeat scroll center center / cover ;">
             <div class="ht__bradcaump__wrap">
@@ -29,33 +32,35 @@
                                     <table>
                                         <thead>
                                             <tr>
-                                                <th class="product-thumbnail">Order ID</th>
-                                                <th class="product-name"><span class="nobr">Order Date</span></th>
-                                                <th class="product-price"><span class="nobr"> Address </span></th>
-                                                <th class="product-stock-stauts"><span class="nobr"> Payment Type </span></th>
-                                                <th class="product-stock-stauts"><span class="nobr"> Payment Status </span></th>
-                                                <th class="product-stock-stauts"><span class="nobr"> Order Status </span></th>
+                                                <th class="product-thumbnail">Product Name</th>
+                                                <th class="product-thumbnail">Product Image</th>
+                                                <th class="product-name">Qty</th>
+                                                <th class="product-price">Price</th>
+                                                <th class="product-price">Total Price</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
                                             $uid=$_SESSION['USER_ID'];
-                                            $res=mysqli_query($conn,"SELECT * FROM `order` WHERE user_id='$uid'");
+                                            $res=mysqli_query($conn,"SELECT distinct(order_detail.id),order_detail.*,product.name,product.image FROM order_detail,product
+                                                                    ,`order` WHERE order_detail.order_id='$order_id' AND `order`.user_id='$uid' AND order_detail.product_id=product.id");
+                                            $total_price=0;
                                             while($row=mysqli_fetch_assoc($res)){
+                                            $total_price=$total_price+($row['qty']*$row['price']);
                                             ?>
                                             <tr>
-                                                <td class="product-add-to-cart"><a href="#"> <?php echo $row['id']?></a></td>
-                                                <td class="product-name"><?php echo $row['added_on']?></td>
-                                                <td class="product-name">
-                                                    <?php echo $row['address']?><br>
-                                                    <?php echo $row['city']?><br>
-                                                    <?php echo $row['pincode']?><br>
-                                                </td>
-                                                <td class="product-name"><?php echo $row['payment_type']?></td>
-                                                <td class="product-name"><?php echo $row['payment_status']?></td>
-                                                <td class="product-name"><?php echo $row['order_statu']?></td>
+                                                <td class="product-name"><?php echo $row['name']?></td>
+                                                <td class="product-name"><img src="<?php echo PRODUCT_IMAGE_SITE_PATH.$row['image']?>" alt="full-image"></td>
+                                                <td class="product-name"><?php echo $row['qty']?></td>
+                                                <td class="product-name"><?php echo $row['price']?></td>
+                                                <td class="product-name"><?php echo $row['qty']*$row['price']?></td>
                                             </tr>
                                             <?php }?>
+                                            <tr>
+                                                <td colspan="3"></td>
+                                                <td class="product-name">Total Price</td>
+                                                <td class="product-name"><?php echo $total_price?></td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>  
