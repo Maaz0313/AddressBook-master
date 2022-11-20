@@ -40,7 +40,9 @@
                                         <tbody>
                                             <?php
                                             $uid=$_SESSION['USER_ID'];
-                                            $res=mysqli_query($conn,"SELECT * FROM `order` WHERE user_id='$uid'");
+                                            $res=mysqli_query($conn,"SELECT `order`.*,order_status.name AS 
+                                                                    order_status_str FROM `order`,order_status WHERE `order`.user_id='$uid'
+                                                                    AND order_status.id=`order`.order_status");
                                             while($row=mysqli_fetch_assoc($res)){
                                             ?>
                                             <tr>
@@ -53,7 +55,7 @@
                                                 </td>
                                                 <td class="product-name"><?php echo $row['payment_type']?></td>
                                                 <td class="product-name"><?php echo $row['payment_status']?></td>
-                                                <td class="product-name"><?php echo $row['order_status']?></td>
+                                                <td class="product-name"><?php echo $row['order_status_str']?></td>
                                             </tr>
                                             <?php }?>
                                         </tbody>
