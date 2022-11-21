@@ -115,8 +115,8 @@ $totalProduct=$obj->totalProduct();
                     <div class="row" >
                         <div class="col-md-12" >
                             <div class="search__inner">
-                                <form action="#" method="get">
-                                    <input placeholder="Search here... " type="text">
+                                <form action="search.php" method="get">
+                                    <input placeholder="Search here... " type="text" name="str">
                                     <button type="submit"></button>
                                 </form>
                                 <div class="search__close__btn">
