@@ -48,7 +48,7 @@ if (isset($_POST['submit'])) {
         }
         else
         {
-            mysqli_query($conn,"INSERT INTO categories(categories,status) VALUES('$categories','1')");
+            mysqli_query($conn,"INSERT INTO categories(categories,`status`) VALUES('$categories','1')");
         }
         header('location:categories.php');
         die();

@@ -1,9 +1,31 @@
 <?php
 require('top.php');
 $cat_id = mysqli_real_escape_string($conn,$_GET['id']);
+
+$price_high_selected="";
+$price_low_selected="";
+$new_selected="";
+$old_selected="";
+
+if(isset($_GET['sort'])){
+    $sort=mysqli_real_escape_string($conn,$_GET['sort']);
+    if ($sort=="price_high") {
+        $sort_order=" ORDER BY product.price DESC";
+        $price_high_selected="selected";
+    }else if ($sort=="price_low") {
+        $sort_order=" ORDER BY product.price ASC";
+        $price_low_selected="selected";
+    }else if ($sort=="new") {
+        $sort_order=" ORDER BY product.id DESC";
+        $new_selected="selected";
+    }else if ($sort=="old") {
+        $sort_order=" ORDER BY product.id ASC";
+        $old_selected="selected";
+    }
+}
 if($cat_id>0)
 {
-$get_product=get_product($conn,'',$cat_id);
+$get_product=get_product($conn,'',$cat_id,'','',$sort_order);
 }
 else{
     ?>
@@ -43,11 +65,12 @@ else{
                         <div class="htc__product__rightidebar">
                             <div class="htc__grid__top">
                                 <div class="htc__select__option">
-                                    <select class="ht__select">
-                                        <option>Default softing</option>
-                                        <option>Sort by popularity</option>
-                                        <option>Sort by average rating</option>
-                                        <option>Sort by newness</option>
+                                    <select class="ht__select" onchange="sort_product_drop('<?php echo $cat_id?>','<?php echo SITE_PATH?>')" id="sort_product_id">
+                                        <option value="">Default softing</option>
+                                        <option value="price_low" <?php echo $price_low_selected?>>Sort by price low to high</option>
+                                        <option value="price_high" <?php echo $price_high_selected?>>Sort by price high to low</option>
+                                        <option value="new" <?php echo $new_selected?>>Sort by new first</option>
+                                        <option value="old" <?php echo $old_selected?>>Sort by new first</option>
                                     </select>
                                     
                                 </div>

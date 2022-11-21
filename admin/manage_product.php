@@ -96,8 +96,11 @@ if (isset($_POST['submit'])) {
             mysqli_query($conn,"INSERT into product(categories_id,name,mrp,price,qty,image,short_desc,description,meta_title,meta_desc,meta_keyword,status) values('$categories_id','$name','$mrp','$price','$qty','$image','$short_desc','$description','$meta_title','$meta_desc','$meta_keyword',1)");
             echo $categories_id, $name, $mrp,$price,$qty,$image,$short_desc,$description,$meta_title,$meta_desc,$meta_keyword;
 		}
-		header('location:product.php');
-		die();
+        ?>
+		<script>
+            window.location.href="product.php";
+        </script>
+		<?php
 	}
 }
 
