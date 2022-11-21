@@ -108,4 +108,5 @@ $totalProduct=$obj->totalProduct();
                 </div>
             </div>
         </header>
+    </div>
    
