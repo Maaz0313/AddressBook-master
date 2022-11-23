@@ -9,6 +9,16 @@ while($row=mysqli_fetch_assoc($cat_res)){
 }
 $obj=new add_to_cart();
 $totalProduct=$obj->totalProduct();
+if(isset($_SESSION['USER_LOGIN'])){
+    $uid=$_SESSION['USER_ID'];
+    if(isset($_GET['wishlist_id'])){
+        $wid=$_GET['wishlist_id'];
+    mysqli_query($conn,"delete from wishlist where id='$wid' and user_id='$uid'");
+    }
+    
+    $wishlist_count=mysqli_num_rows(mysqli_query($conn,"select product.name,product.image,product.image,product.price,product.mrp,wishlist.id from
+    product,wishlist where wishlist.product_id-product.id and wishlist.user_id='$uid'"));
+}
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -27,8 +37,22 @@ $totalProduct=$obj->totalProduct();
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/custom.css">
     <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+    <style>
+        .htc__shopping__cart a span.htc__wishlist {
+    background: #c43b68;
+    border-radius: 100%;
+    color: #fff;
+    font-size: 9px;
+    height: 17px;
+    line-height: 19px;
+    position: absolute;
+    right: 26px;
+    text-align: center;
+    top: -4px;
+    width: 17px;
+}
+    </style>
 </head>
-
 <body>
     <!--[if lt IE 8]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -96,10 +120,16 @@ $totalProduct=$obj->totalProduct();
                                         }
                                         ?>
                                     <!-- </div> -->
+                                    <div class="header__account">
+                                    </div>
                                     <div class="htc__shopping__cart">
-                                    <a class="cart__menu" href="wishlist.php"><i class="icon-heart icons"></i></a>
-                                    <a href="wishlist.php"><span class="htc__qua"><?php echo $totalProduct?></span></a>
-
+                                        <?php
+                                        if(isset($_SESSION['USER_ID'])){
+                                        ?>
+                                        <a class="cart__menu" href="wishlist.php"><i class="icon-heart icons"></i></a>
+                                        <a href="wishlist.php"><span class="htc__wishlist"><?php echo $wishlist_count?></span></a>
+                                        &nbsp;&nbsp;
+                                        <?php }?>
                                         <a class="cart__menu" href="cart.php"><i class="icon-handbag icons"></i></a>
                                         <a href="cart.php"><span class="htc__qua"><?php echo $totalProduct?></span></a>
                                     </div>
@@ -111,7 +141,7 @@ $totalProduct=$obj->totalProduct();
                 </div>
             </div>
         </header>
-        <div class="body__overlay"></div>
+        <!-- <div class="body__overlay"></div> -->
         <!-- Start Search Popap -->
         <div class="search__area">
                 <div class="container" >
