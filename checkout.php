@@ -44,6 +44,7 @@ if(isset($_POST['submit'])){
         
     }
     unset($_SESSION['cart']);
+
     if ($payment_type=='payu') {
         $MERCHANT_KEY = "gtKFFx"; 
         $SALT = "eCwWELxi";
@@ -235,8 +236,8 @@ if(isset($_POST['submit'])){
                                         <div class="accordion__body">
                                             <div class="paymentinfo">
                                                 <div class="single-method">
-                                                COD <input type="radio" name="payment_type" value="cod" required>
-                                                &nbsp;&nbsp;PayU <input type="radio" name="payment_type" value="payu" required>
+                                                 <input type="radio" name="payment_type" value="cod" required>COD
+                                                &nbsp;&nbsp; <input type="radio" name="payment_type" value="payu" required>PayU
                                                 </div>
                                                 <div class="single-method">
                                                 

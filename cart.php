@@ -10,7 +10,7 @@ require('top.php');
                         <div class="col-xs-12">
                             <div class="bradcaump__inner">
                                 <nav class="bradcaump-inner">
-                                  <a class="breadcrumb-item" href="index.html">Home</a>
+                                  <a class="breadcrumb-item" href="index.php">Home</a>
                                   <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
                                   <span class="breadcrumb-item active">shopping cart</span>
                                 </nav>
@@ -59,9 +59,9 @@ require('top.php');
                                             </td>
                                             <td class="product-price"><span class="amount">Rs. <?php echo $price?></span></td>
                                             <td class="product-quantity"><input type="number" id="<?php echo $key?>qty" value="<?php echo $qty?>" />
-                                            <br><a href="javascript:void(0)" onclick="manage_cart('<?php $key?>','update')">update</a></td>
+                                            <br><a href="javascript:void(0)" onclick="manage_cart('<?php echo $key?>','update')">update</a></td>
                                             <td class="product-subtotal"><?php echo $qty*$price?></td>
-                                            <td class="product-remove"><a href="javascript:void(0)" onclick="manage_cart('<?php $key?>','remove')"><i class="icon-trash icons"></i></a></td>
+<td class="product-remove"><a href="javascript:void(0)" onclick="manage_cart('<?php echo $key?>','remove')"><i class="icon-trash icons"></i></a></td>
                                         </tr>
                                         <?php }?>
                                     </tbody>
