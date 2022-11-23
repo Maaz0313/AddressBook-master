@@ -47,7 +47,7 @@ else{
                                 <div class="product__big__images">
                                     <div class="portfolio-full-image tab-content">
                                         <div role="tabpanel" class="tab-pane fade in active" id="img-tab-1">
-                                            <img src="<?php echo PRODUCT_IMAGE_SITE_PATH.$get_product['0']['image']?>" alt="full-image">
+                                            <img src="<?php echo PRODUCT_IMAGE_SITE_PATH.$get_product['0']['image']?>" alt="product-image">
                                         </div>
                                     </div>
                                 </div>

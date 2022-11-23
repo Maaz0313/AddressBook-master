@@ -113,7 +113,6 @@
                     <div class="col-xs-12">
                         <div class="section__title--2 text-center">
                             <h2 class="title__line">New Arrivals</h2>
-                            <p>But I must explain to you how all this mistaken idea</p>
                         </div>
                     </div>
                 </div>
@@ -132,7 +131,12 @@
                                             <img src="<?php echo PRODUCT_IMAGE_SITE_PATH.$list['image'] ?>" alt="product images">
                                         </a>
                                     </div>
-                                    
+                                    <div class="fr__hover__info">
+                                    <ul class="product__action">
+                                        <li><a href="javascript:void(0)" onclick="wishlist_manage('<?php echo $list['id'] ?>','add')"><i class="icon-heart icons"></i></a></li>
+                                        <li><a href="javascript:void(0)" onclick="manage_cart('<?php echo $list['id'] ?>','add')"><i class="icon-handbag icons"></i></a></li>
+                                    </ul>
+                                </div>
                                     <div class="fr__product__inner">
                                         <h4><a href="product.php?id=<?php echo $list['id']?>"><?php echo $list['name'] ?></a></h4>
                                         <ul class="fr__pro__prize">
@@ -157,7 +161,6 @@
                     <div class="col-xs-12">
                         <div class="section__title--2 text-center">
                             <h2 class="title__line">Best Seller</h2>
-                            <p>But I must explain to you how all this mistaken idea</p>
                         </div>
                     </div>
                 </div>
@@ -175,7 +178,7 @@
                                     <ul class="product__action">
                                         <li><a href="wishlist.html"><i class="icon-heart icons"></i></a></li>
 
-                                        <li><a href="cart.html"><i class="icon-handbag icons"></i></a></li>
+                                        <li><a href="javascript:void(0)" onclick="manage_cart('<?php echo $list['id'] ?>','add')"><i class="icon-handbag icons"></i></a></li>
 
                                         <li><a href="#"><i class="icon-shuffle icons"></i></a></li>
                                     </ul>

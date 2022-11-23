@@ -70,7 +70,7 @@ else{
                                         <option value="price_low" <?php echo $price_low_selected?>>Sort by price low to high</option>
                                         <option value="price_high" <?php echo $price_high_selected?>>Sort by price high to low</option>
                                         <option value="new" <?php echo $new_selected?>>Sort by new first</option>
-                                        <option value="old" <?php echo $old_selected?>>Sort by new first</option>
+                                        <option value="old" <?php echo $old_selected?>>Sort by old first</option>
                                     </select>
                                     
                                 </div>
