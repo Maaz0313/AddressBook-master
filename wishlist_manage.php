@@ -1,7 +1,6 @@
 <?php
 require('conn.inc.php');
 require('functions.inc.php');
-require('add_to_cart.inc.php');
 
 $pid=get_safe_value($conn,$_POST['pid']);
 $type=get_safe_value($conn,$_POST['type']);
