@@ -120,18 +120,20 @@ if(isset($_SESSION['USER_LOGIN'])){
                                         }
                                         ?>
                                     <!-- </div> -->
-                                    <div class="header__account">
-                                    </div>
                                     <div class="htc__shopping__cart">
                                         <?php
                                         if(isset($_SESSION['USER_ID'])){
                                         ?>
                                         <a class="cart__menu" href="wishlist.php"><i class="icon-heart icons"></i></a>
-                                        <a href="wishlist.php"><span class="htc__wishlist"><?php echo $wishlist_count?></span></a>
-                                        &nbsp;&nbsp;
+                                        <a href="wishlist.php"><span class="htc__qua"><?php echo $wishlist_count?></span></a>
+                                        
                                         <?php }?>
+                                    </div>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <div class="htc__shopping__cart">
+                                        
                                         <a class="cart__menu" href="cart.php"><i class="icon-handbag icons"></i></a>
-                                        <a href="cart.php"><span class="htc__qua"><?php echo $totalProduct?></span></a>
+                                        <span class="htc__qua"><?php echo $totalProduct?></span></a>
                                     </div>
                                 </div>
                             </div>

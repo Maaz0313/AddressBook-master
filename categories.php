@@ -1,7 +1,7 @@
 <?php
 require('top.php');
 $cat_id = mysqli_real_escape_string($conn,$_GET['id']);
-
+$sort_order="";
 $price_high_selected="";
 $price_low_selected="";
 $new_selected="";
