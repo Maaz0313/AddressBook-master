@@ -17,7 +17,7 @@ if(isset($_SESSION['USER_LOGIN'])){
     }
     
     $wishlist_count=mysqli_num_rows(mysqli_query($conn,"select product.name,product.image,product.image,product.price,product.mrp,wishlist.id from
-    product,wishlist where wishlist.product_id-product.id and wishlist.user_id='$uid'"));
+    product,wishlist where wishlist.product_id=product.id and wishlist.user_id='$uid'"));
 }
 ?>
 <!doctype html>
@@ -73,13 +73,13 @@ if(isset($_SESSION['USER_LOGIN'])){
                             <div class="col-md-7 col-lg-6 col-sm-5 col-xs-3">
                                 <nav class="main__menu__nav hidden-xs hidden-sm">
                                     <ul class="main__menu">
-                                        <li class="drop"><a href="index.php">Home</a></li>
+                                        <li ><a href="index.php">Home</a></li>
                                         <?php
+                                            //print_r($cat_arr);
                                             foreach($cat_arr as $list)
                                             {
-                                                ?>
-                                                <li><a href="categories.php?id=<?php echo $list['id']?>"><?php echo $list['categories']?></a></li>
-                                                <?php
+
+                                                echo '<li><a href="categories.php?id='.$list['id'].'">'. $list['categories'].'</a></li>';
                                             }
                                         ?>
                                         <li><a href="contact.php">Contact</a></li>
