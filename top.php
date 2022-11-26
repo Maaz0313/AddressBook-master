@@ -133,7 +133,7 @@ if(isset($_SESSION['USER_LOGIN'])){
                                     <div class="htc__shopping__cart">
                                         
                                         <a class="cart__menu" href="cart.php"><i class="icon-handbag icons"></i></a>
-                                        <span class="htc__qua"><?php echo $totalProduct?></span></a>
+                                        <a href="cart.php"><span class="htc__qua"><?php echo $totalProduct?></span></a>
                                     </div>
                                 </div>
                             </div>

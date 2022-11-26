@@ -10,7 +10,7 @@ if(!isset($_SESSION['USER_LOGIN'])){
 $uid=$_SESSION['USER_ID'];
 
 $res=mysqli_query($conn,"select product.name,product.image,product.image,product.price,product.mrp,wishlist.id from
-    product,wishlist where wishlist.product_id-product.id and wishlist.user_id='$uid'");
+    product,wishlist where wishlist.product_id=product.id and wishlist.user_id='$uid'");
 ?>
 
 <!-- Start Bradcaump area -->
