@@ -17,13 +17,16 @@ function get_safe_value($conn,$str)
         return mysqli_real_escape_string($conn,$str);
     }
 }
-function get_product($conn,$limit='',$cat_id='',$product_id='',$search_str='',$sort_order='') {
+function get_product($conn,$limit='',$cat_id='',$product_id='',$search_str='',$sort_order='',$is_best_seller='') {
     $sql="SELECT product.*,categories.categories FROM product,categories where product.status=1 ";
     if($cat_id!=''){
         $sql.=" AND product.categories_id=$cat_id ";
     }
     if($product_id!=''){
         $sql.=" AND product.id=$product_id ";
+    }
+    if($is_best_seller!=''){
+        $sql.=" AND product.best_seller=1";
     }
         $sql.=" AND product.categories_id=categories.id ";
     if($search_str!=''){
